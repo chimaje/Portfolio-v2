@@ -3,6 +3,9 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { Image } from 'astro:assets';
+import profileimage from '../assets/Profileimage.jpg';
+import * as homeContent from '../content/home/homecontent.md';
 ---
 
 <!doctype html>
@@ -12,9 +15,74 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 	</head>
 	<body>
 		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
+		<main>	
+			<div class="home">
+				<div class="homecontent">
+					<h1 class="description">{homeContent.frontmatter.description}</h1>
+					<div class="titles">
+						{homeContent.frontmatter.titles.map((title: string, i: number) => (
+						<p class="title">
+							  {title} 
+						</p>
+						))}
+					</div>
+					<a href={homeContent.frontmatter.cv} download class="cv-button">
+						Download CV
+					</a>
+				</div>
+				{profileimage && (<Image src={profileimage} class="profile" alt="Profile" />)}
+			</div>
 		</main>
 		<Footer />
 	</body>
 </html>
+<style>
+	.home{
+		display: flex;
+		flex-direction: row;
+	}
+	.homecontent{
+		display: flex;
+		flex-direction: column;
+	}
+	.profile {
+	width: 20rem;
+	height: 20rem;
+	border-radius: 1rem;
+	border-bottom: #000000 10px solid;
+	border-right: #000000 10px solid;
+	margin-bottom: 1rem;
+	}
+	.description{
+		color: aliceblue;
+	}
+	.titles{
+		display: flex;
+		flex-direction: row;
+	}
+	.title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #E3C533;
+  animation: slide  3s ease-in-out;
+	}
+	.cv-button {
+  background: black;
+  display: flex;
+  align-items: center;
+  color: white;
+  width: 8rem;
+  height: 1rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  text-decoration: none;
+  border-bottom: solid 5px #00C6AE;
+  border-right: solid 5px #00C6AE;
+  transition: background 0.3s ease;
+}
+	@keyframes slide {
+  0%, 20% { transform: translateY(0); opacity: 1; }
+  25%, 95% { transform: translateY(-100%); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+</style>

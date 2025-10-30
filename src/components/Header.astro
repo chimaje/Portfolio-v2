@@ -9,8 +9,8 @@ import HeaderLink from './HeaderLink.astro';
 		<div class="internal-links">
 			<HeaderLink href="/">Home</HeaderLink>
 			<HeaderLink href="/about">About</HeaderLink>
-			<HeaderLink href="/blog">Experience</HeaderLink>
-			<HeaderLink href="/blog">Projects</HeaderLink>
+			<HeaderLink href="/experience">Experience</HeaderLink>
+			<HeaderLink href="/projects">Projects</HeaderLink>
 		</div>
 		<!-- <div class="social-links">
 			<a href="https://m.webtoo.ls/@astro" target="_blank">
@@ -47,17 +47,19 @@ import HeaderLink from './HeaderLink.astro';
 	header {
 		margin: 0;
 		padding: 0 1em;
-		background: white;
+		background: black;
 		box-shadow: 0 2px 8px rgba(var(--black), 5%);
 	}
 	h2 {
 		margin: 0;
 		font-size: 1em;
+		color: aliceblue;
 	}
 
 	h2 a,
 	h2 a.active {
 		text-decoration: none;
+		color: #F3D338;
 	}
 	nav {
 		display: flex;
@@ -69,10 +71,12 @@ import HeaderLink from './HeaderLink.astro';
 		color: var(--black);
 		border-bottom: 4px solid transparent;
 		text-decoration: none;
+		color: aliceblue;
 	}
 	nav a.active {
 		text-decoration: none;
-		border-bottom-color: var(--accent);
+		border-bottom-color: #F3D338;
+		color: #F3D338;
 	}
 	.social-links,
 	.social-links a {
